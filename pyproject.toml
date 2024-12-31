@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "httpie-apisix-httpsig"
+version = "0.1.0"
+description = ""
+authors = ["Zhao Jin <zhaojin@hbhxdts.com>"]
+readme = "README.md"
+#packages = [{include = "httpie_apisix_hmac"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+httpie = "^3.2.2"
+pylint = "^2.17.4"
+pytest = "^7.3.1"
+isort = "^5.12.0"
+black = "^23.3.0"
+pyparsing = "^3.2.0"
+
+[project.entry-points."httpie.plugins.auth.v1"]
+httpie_apisix_httpsig = "httpie_apisix_httpsig:ApisixHttpsigAuthPlugin"
+
+[tool.poetry.plugins] # Optional super table
+
+[tool.poetry.plugins."httpie.plugins.auth.v1"]
+"httpie_apisix_httpsig" = "httpie_apisix_httpsig:ApisixHttpsigAuthPlugin"
+
+[build-system]
+requires = ["poetry-core", "setuptools>=40.8.0", "wheel"]
+build-backend = "poetry.core.masonry.api"
